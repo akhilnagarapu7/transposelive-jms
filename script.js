@@ -1,4 +1,3 @@
-
   <script>
     const inputTextArea = document.getElementById('inputTextArea');
     const semitoneValue = document.getElementById('semitoneValue');
@@ -111,7 +110,7 @@ function applyColorAndDots(text) {
 
 // Force desktop mode on mobile with a longer width
 if (window.innerWidth < 768) {
-    document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=1400');
+    document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=1024');
 }
 
 // Fix single-click to edit issue
@@ -141,48 +140,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
-
-// Prevent table formatting when mode is 'chords'
-function formatText(text) {
-    if (modePreference === 'chords') {
-        return applyColorAndDots(text).replace(/\n/g, '<br>');
-    }
-    
-    // Existing table formatting logic
-    if (!text.includes('|')) {
-        return applyColorAndDots(text).replace(/\n/g, '<br>');
-    }
-
-    const lines = text.split('\n');
-    let maxCols = 0;
-    const tableData = lines.map(line => {
-        const cols = line.split('|').map(col => col.trim());
-        maxCols = Math.max(maxCols, cols.length);
-        return cols;
-    });
-
-    tableData.forEach(row => {
-        while (row.length < maxCols) {
-            row.push('');
-        }
-    });
-
-    const colWidths = new Array(maxCols).fill(0);
-    tableData.forEach(row => {
-        row.forEach((col, i) => {
-            colWidths[i] = Math.max(colWidths[i], col.length);
-        });
-    });
-
-    const formattedLines = tableData.map(row => {
-        return row.map((col, i) => {
-            const paddedCol = col.padEnd(colWidths[i], ' ');
-            return `<span class='table-cell' style='display: inline-block; width: ${colWidths[i] * 10}px'>${applyColorAndDots(paddedCol)}</span>`;
-        }).join('<span class="table-separator">|</span>');
-    });
-
-    return formattedLines.join('<br>');
-}
 
     
 
