@@ -1,0 +1,296 @@
+ <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            padding: 10px;
+            margin: 0;
+        }
+
+        h1 {
+            font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+            font-size: 1.8em;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .accidentals-notes-chords {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .radio-button-group {
+            display: flex;
+            flex: 1;
+            justify-content: space-between;
+        }
+
+        .radio-button {
+            flex: 1;
+            text-align: center;
+            padding: 8px;
+            font-size: 0.9em;
+            border: 2px solid #3498db;
+            background-color: white;
+            color: #3498db;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .radio-button.selected {
+            background-color: #3498db;
+            color: white;
+        }
+
+        input[type="radio"] {
+            display: none;
+        }
+
+
+
+.note-group {
+    display: inline-block;
+    position: relative; /* Needed for positioning dots relative to the note */
+}
+
+.dot {
+    position: absolute;
+    left: 50%; /* Center the dot horizontally relative to the note */
+    transform: translateX(-50%); /* Offset to align with the note center */
+    font-size: 0.8em;
+    font-weight: bold;
+    color: inherit;
+}
+
+.dot-above {
+    top: -0.8em; /* Adjust this value to control distance above the note */
+}
+
+.dot-below {
+    bottom: -0.6em; /* Adjust this value to control distance below the note */
+}
+
+.note-wrapper {
+    display: inline-block;
+    font-family: inherit; /* Ensures consistent font style with text */
+}
+
+.sharp {
+    font-size: 0.8em;
+    vertical-align: super;
+}
+
+.flat {
+    font-size: 0.8em;
+    vertical-align: sub;
+}
+
+
+
+       #inputTextArea {
+            width: 100%;
+            min-height: 200px;
+            max-height: 400px;
+            font-family: monospace;
+            font-size: 1.2em;
+            border: 1px solid #bbb;
+            padding: 12px;
+            white-space: pre;
+            word-wrap: break-word;
+            overflow-y: auto;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            outline: none;
+            transition: box-shadow 0.3s ease;
+    vertical-align: baseline; /* Ensure proper alignment */
+        }
+
+
+
+
+
+/* Ensures superscript and subscript are styled properly */
+#inputTextArea sup, #inputTextArea sub {
+    font-size: 0.75em; /* Adjust size as needed */
+    vertical-align: baseline; /* Keeps text in baseline */
+    font-family: Arial, sans-serif; /* Ensures font consistency */
+    line-height: 1; /* Adjust line-height to prevent misalignment */
+}
+
+
+
+        #inputTextArea:focus {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+
+        label {
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        input[type="text"], input[type="number"] {
+            padding: 8px;
+            border: 1px solid #bbb;
+            border-radius: 4px;
+            font-size: 1em;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 8px;
+            font-size: 0.9em;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+
+
+ .accidentals, .mode-selection {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .blue-notes {
+            color: #1e90ff;
+        }
+
+        .red-chords {
+            color: #e74c3c;
+        }
+
+        .sharp, .flat {
+            font-size: 0.9em;
+            vertical-align: super;
+        }
+
+        .octave {
+            font-size: 0.9em;
+            vertical-align: sub;
+        }
+
+
+
+
+
+
+        .controls button, .controls input {
+            flex: 1;
+            min-width: 70px;
+            margin: 0 5px;
+        }
+
+        .print-controls, .title-controls {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .print-controls div, .title-controls div {
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .print-controls label, .title-controls label {
+            font-weight: bold;
+            margin-right: 5px;
+            flex-shrink: 0;
+        }
+
+        .print-controls input, .title-controls input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #bbb;
+            border-radius: 4px;
+            font-size: 1em;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .accidentals-notes-chords {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .radio-button {
+                font-size: 0.8em;
+                padding: 6px;
+            }
+
+            .controls {
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .controls button {
+                flex: 1;
+                min-width: 70px;
+            }
+
+            .print-controls, .title-controls {
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .print-controls div, .title-controls div {
+                flex: 1;
+                min-width: 150px;
+            }
+
+            .print-controls label, .title-controls label {
+                margin-right: 5px;
+            }
+
+            .print-controls input, .title-controls input {
+                width: calc(100% - 120px);
+            }
+
+            .controls input {
+                width: 70px;
+            }
+
+
+
+
+        }
+    </style>
