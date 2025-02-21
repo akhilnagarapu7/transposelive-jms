@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JMS Transpose Live</title>
+   
+</head>
+<body>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Hello, World!</h1>
+    <script src="script.js"></script>
+  
+    <div class="container">
+
+        <!-- Accidentals and Mode in one line -->
+        <div class="accidentals-notes-chords">
+            <div class="radio-button-group">
+                <label class="radio-button" data-accidental="sharp">Sharps
+                    <input type="radio" name="accidental" value="sharp" checked>
+                </label>
+                <label class="radio-button" data-accidental="flat">Flats
+                    <input type="radio" name="accidental" value="flat">
+                </label>
+            </div>
+            <div class="radio-button-group">
+                <label class="radio-button" data-mode="notes">Notes
+                    <input type="radio" name="mode" value="notes" checked>
+                </label>
+                <label class="radio-button" data-mode="chords">Chords
+                    <input type="radio" name="mode" value="chords">
+                </label>
+            </div>
+        </div>
+
+        <!-- Transpose buttons, Semitone display, and Reset button -->
+        <div class="controls">
+            <button id="transposeMinus">-</button>
+            <input type="number" id="semitoneValue" value="0" min="-12" max="12" readonly>
+            <button id="transposePlus">+</button>
+            <button id="resetButton">Reset</button>
+        </div>
+
+            <!-- Text Area -->
+    <div id="inputTextArea" contenteditable="false" placeholder="Enter notes or chords here..." style="font-family: monospace; white-space: pre; border: 1px solid black; padding: 10px; width: 100%; height: 300px;"></div>
+
+        <!-- Title input -->
+        <div class="title-controls">
+            <label for="username">Title:</label>
+            <input type="text" id="username" placeholder="Enter Title">
+        </div>
+
+        <!-- Key and Time inputs on the same line -->
+        <div class="print-controls">
+            <div>
+                <label for="key">Key:</label>
+                <input type="text" id="key" placeholder="Enter Key">
+            </div>
+            <div>
+                <label for="time">Time:</label>
+                <input type="text" id="time" placeholder="Enter Time Signature">
+            </div>
+        </div>
+
+        <!-- Print button, Save & Export, and Import buttons on the same line -->
+        <div class="controls">
+            <button id="printBtn">Print</button>
+            <button id="saveBtn">Save</button>
+            <button id="importBtn">Open</button>
+            <input type="file" id="importFile" style="display: none;">
+        </div>
+
+    </div>
+  
+
+</body>
+</html>
+
